@@ -1,0 +1,15 @@
+{
+  "orgName": "Fonada MCP Dev",
+  "edition": "Partner Developer",
+  "features": [
+    "Einstein1AIPlatform"
+  ],
+  "settings": {
+    "einsteinGptSettings": {
+      "enableEinsteinGptPlatform": true
+    },
+    "agentPlatformSettings": {
+      "enableAgentPlatform": true
+    }
+  }
+}

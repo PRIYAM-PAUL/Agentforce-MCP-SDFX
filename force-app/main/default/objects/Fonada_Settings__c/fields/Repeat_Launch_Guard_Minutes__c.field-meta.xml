@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Repeat_Launch_Guard_Minutes__c</fullName>
+    <description>Minutes during which Start Campaign refuses to start the same Salesforce Campaign or Account again with the same Fonada agent, so a retry or a repeated "yes" does not call everyone twice. Blank = 10. 0 = off.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Minutes during which the same Salesforce Campaign or Account cannot be started again with the same Fonada agent (prevents double calls). Blank = 10, 0 = off.</inlineHelpText>
+    <label>Repeat launch guard (minutes)</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

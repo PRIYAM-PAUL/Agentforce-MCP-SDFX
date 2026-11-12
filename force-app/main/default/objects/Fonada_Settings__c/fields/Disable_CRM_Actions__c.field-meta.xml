@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disable_CRM_Actions__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Tick to stop the agent actions Find Contact or Lead, Get Call List and Start Campaign from reading Salesforce data (for example when the agent is deployed on a public channel).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Tick to stop the agent actions Find Contact or Lead, Get Call List and Start Campaign from reading Salesforce data (for example when the agent is deployed on a public channel).</inlineHelpText>
+    <label>Disable CRM actions</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "sessionId": "01a1a631-e117-7ade-af94-7a82ff6404f1",
+  "agentId": "0XxBg0000000j1xKAA",
+  "created": "2026-11-04T10:54:14.308Z",
+  "turns": [
+    {
+      "turn": 1,
+      "timestamp": "2026-11-04T10:54:14.308Z",
+      "role": "agent",
+      "summary": "Hi, I'm the Fonada assistant. I can list your telephony agents, place test calls, send WhatsApp or R...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 2,
+      "timestamp": "2026-11-04T10:54:21.022Z",
+      "role": "user",
+      "summary": "list my telephony agents",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 3,
+      "timestamp": "2026-11-04T10:54:27.680Z",
+      "role": "agent",
+      "summary": "Here are your telephony agents:\n\nprod_test – Outbound FAQ voice assistant (Hindi, voice: shubh)\nlast...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/0719450b-1b54-48d5-b40f-2957925ea442.json",
+      "planId": "0719450b-1b54-48d5-b40f-2957925ea442"
+    },
+    {
+      "turn": 4,
+      "timestamp": "2026-11-04T10:54:37.325Z",
+      "role": "user",
+      "summary": "check my Fonada credit balance",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 5,
+      "timestamp": "2026-11-04T10:54:43.548Z",
+      "role": "agent",
+      "summary": "I was unable to retrieve your Fonada credit balance due to a validation error with the credit balanc...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/fd2fdd7d-3fac-4854-9bc8-9913b6f9ecce.json",
+      "planId": "fd2fdd7d-3fac-4854-9bc8-9913b6f9ecce"
+    }
+  ]
+}

@@ -1,0 +1,450 @@
+<template>
+  <lightning-card
+    title="Fonada MCP for Agentforce – Setup & Guide"
+    icon-name="standard:voice_call"
+  >
+    <lightning-button-icon
+      slot="actions"
+      icon-name="utility:refresh"
+      alternative-text="Refresh"
+      title="Refresh"
+      onclick={handleRefresh}
+    ></lightning-button-icon>
+
+    <div class="slds-p-horizontal_medium">
+      <p class="slds-m-bottom_small">
+        Fonada MCP connects Agentforce to the Fonada AI platform. Your agent can
+        find Salesforce contacts and leads, call them through Fonada, run
+        outbound voice campaigns from a Salesforce Campaign or Account, send
+        WhatsApp and RCS messages, search your Fonada knowledge base and check
+        credits.
+      </p>
+
+      <lightning-tabset variant="scoped">
+        <lightning-tab label="1. Set up the agent">
+          <ol class="slds-list_ordered slds-m-bottom_medium">
+            <li>
+              <b>Turn on Agentforce:</b> Setup → Einstein Setup → Turn on
+              Einstein; Setup → Agentforce Agents → On ( If not enabled ).
+            </li>
+            <li>
+              <b>Paste your Fonada key:</b> Setup → Named Credentials → External
+              Credentials tab → FonadaMCP → Principals → MCPAuthentication →
+              Edit → Authentication Parameters → Add →
+              <code>FonadaApiKey</code> → your <code>fsk_…</code> key → Save.
+            </li>
+            <li>
+              <b>Check the connection:</b> Setup → Agentforce Registry →
+              Register MCP Servers → FonadaMCP → Refresh ( wait for minute ).
+              Tools are listed.
+            </li>
+            <li>
+              <b>Create the agent:</b> Agentforce Builder → New Agent → Service
+              agent → <b>Create new user</b> → Create. Click Refresh (top right
+              of this card), then select your newly created agent user as
+              <code>default_agent_user</code> below (if needed).
+            </li>
+            <li>
+              <b>Copy the script:</b> pick the agent user below (both badges
+              green) and click <b>Copy script</b>.
+            </li>
+            <li>
+              <b>Paste it:</b> in the Builder open the agent →
+              <b>Script</b> view (&lt;/&gt;) → select all → paste → Save →
+              <b>Commit</b> → Activate. Then open <b>Preview</b> → New
+              conversation. (Save alone is not enough: the Fonada tools only
+              work after Commit.)
+            </li>
+            <li>
+              <b>Use it internally:</b> the agent can read your Salesforce
+              contacts and leads and start calls, so use it in Preview or on
+              channels for your own employees, not on a public website or
+              customer chat. To turn the Salesforce data actions off: Setup →
+              Custom Settings → <b>Fonada Settings</b> → Manage → tick
+              <i>Disable CRM actions</i>.
+            </li>
+          </ol>
+
+          <template lwc:if={loading}>
+            <lightning-spinner
+              alternative-text="Loading"
+              size="small"
+            ></lightning-spinner>
+          </template>
+
+          <template lwc:if={error}>
+            <div
+              class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_small"
+              role="alert"
+            >
+              {error}
+            </div>
+          </template>
+
+          <template lwc:if={noAgentUsers}>
+            <div
+              class="slds-notify slds-notify_alert slds-alert_warning"
+              role="alert"
+            >
+              No agent user found yet. Create an agent in Agentforce Builder
+              with "Create new user", then click Refresh.
+            </div>
+          </template>
+
+          <template lwc:if={hasAgentUsers}>
+            <lightning-combobox
+              label="Agent user (default_agent_user)"
+              value={selected}
+              options={options}
+              onchange={handleSelect}
+            ></lightning-combobox>
+            <lightning-combobox
+              class="slds-m-top_x-small"
+              label="AI model for the Fonada agent"
+              value={model}
+              options={modelOptions}
+              onchange={handleModel}
+              field-level-help="Claude Sonnet 4.5 handles multi-step tool use best. If the agent answers 'Sorry, it looks like something has gone wrong', your org may not offer that model: pick another one and paste the script again."
+            ></lightning-combobox>
+
+            <div class="slds-m-vertical_small">
+              <template lwc:if={selectedUser}>
+                <lightning-badge
+                  label={accessLabel}
+                  icon-name={accessIcon}
+                  class={accessClass}
+                ></lightning-badge>
+                <lightning-badge
+                  label={credLabel}
+                  icon-name={credIcon}
+                  class={credClass}
+                ></lightning-badge>
+              </template>
+            </div>
+
+            <label class="slds-form-element__label" for="script"
+              >Agent Script (ready to paste)</label
+            >
+            <textarea
+              id="script"
+              class="slds-textarea script-box"
+              rows="18"
+              readonly
+              value={script}
+            ></textarea>
+
+            <div class="slds-m-top_small">
+              <lightning-button
+                variant="brand"
+                label={copyLabel}
+                icon-name="utility:copy"
+                onclick={handleCopy}
+                disabled={noScript}
+              ></lightning-button>
+              <lightning-button
+                class="slds-m-left_small"
+                label="Download .agent file"
+                icon-name="utility:download"
+                onclick={handleDownload}
+                disabled={noScript}
+              ></lightning-button>
+            </div>
+          </template>
+        </lightning-tab>
+
+        <lightning-tab label="2. What you can ask">
+          <p class="slds-m-bottom_small">
+            Talk to the agent in plain language. It combines your Salesforce
+            data with the Fonada AI platform. A few examples by area:
+          </p>
+          <table
+            class="slds-table slds-table_bordered slds-table_cell-buffer slds-m-bottom_medium"
+          >
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Example requests</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Salesforce data</b></td>
+                <td>
+                  Find a contact or lead by name · build a call list from a
+                  Salesforce Campaign or Account
+                </td>
+              </tr>
+              <tr>
+                <td><b>Voice calls</b></td>
+                <td>
+                  "Call contact &lt;name&gt; using &lt;Fonada agent&gt;" · "Call
+                  93XXXXXXXX with &lt;Fonada agent&gt;" · list your Fonada voice
+                  agents
+                </td>
+              </tr>
+              <tr>
+                <td><b>Outbound campaigns</b></td>
+                <td>
+                  "Start a campaign for &lt;Salesforce campaign&gt; with
+                  &lt;Fonada agent&gt;" · pause, resume or stop a campaign ·
+                  lead status, call records (CDR), dispositions and KPIs
+                </td>
+              </tr>
+              <tr>
+                <td><b>Messaging</b></td>
+                <td>
+                  Send an approved WhatsApp or RCS template to a contact, a lead or
+                  a whole Salesforce Campaign or Account (no CSV upload; the
+                  person's name can fill a template variable) · list your templates
+                </td>
+              </tr>
+              <tr>
+                <td><b>Knowledge &amp; analytics</b></td>
+                <td>
+                  Search or add to a Fonada knowledge base · KPI definitions ·
+                  credit balance
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="slds-m-bottom_small">
+            The ready-made agent includes a curated set of Fonada tools. The
+            Fonada MCP server offers <b>400+ tools</b> in total (agents, voice,
+            WhatsApp, RCS, chatbot, flows, media, knowledge base, analytics,
+            webhooks and more); ask your Fonada contact to enable more in a
+            future version, and add your own Flow or Apex actions to the agent
+            in Agentforce Builder.
+          </p>
+          <p class="slds-m-bottom_small">
+            To use the remaining MCP tools, enable them by navigating to: Setup
+            → Agentforce Registry → Register MCP Servers → FonadaMCP → Tools tab
+            → Manage Tools.
+          </p>
+          <p class="slds-text-color_weak">
+            Calls, messages and campaigns spend Fonada credits. The agent always
+            shows who will be contacted and asks you to confirm first.
+          </p>
+        </lightning-tab>
+
+        <lightning-tab label="3. Campaigns from Salesforce">
+          <ol class="slds-list_ordered">
+            <li>
+              Open the <b>Campaigns</b> tab → New → give it a name → Save. (If
+              you can't create a Campaign, ask your admin to tick
+              <b>Marketing User</b> on your user: Setup → Users → Edit.)
+            </li>
+            <li>
+              Add members: from a Contacts or Leads list view or report, select
+              people → <b>Add to Campaign</b>. Use report filters to pick
+              exactly who should be called.
+            </li>
+            <li>
+              In the agent:
+              <code
+                >start a campaign for &lt;campaign name&gt; with &lt;Fonada
+                agent&gt;</code
+              >.
+            </li>
+            <li>
+              Phones are converted to Fonada format automatically (093XXXXXXXX →
+              9193XXXXXXXX). People without a phone, duplicate numbers and
+              records marked <b>Do Not Call</b> are skipped.
+            </li>
+            <li>
+              If several campaigns or accounts match the name you typed, the
+              agent lists them and asks which one; it never picks one on its
+              own.
+            </li>
+            <li>Track it: <code>how did campaign &lt;name&gt; go</code>.</li>
+          </ol>
+        </lightning-tab>
+
+        <lightning-tab label="4. Troubleshooting">
+          <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+              <tr>
+                <th>You see</th>
+                <th>Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>INVALID_API_INPUT / named credential refresh failed</td>
+                <td>The key is missing or wrong: redo step 2 of the setup.</td>
+              </tr>
+              <tr>
+                <td>credential_access_denied</td>
+                <td>
+                  The agent user's badges above are not green. Click Refresh; if
+                  still missing, assign "Fonada MCP - Permission Set" and
+                  "Fonada MCP - Agent Credential Read" to the agent user.
+                </td>
+              </tr>
+              <tr>
+                <td>Off-topic reply</td>
+                <td>
+                  Mention Fonada, a contact, a campaign or a call in your
+                  request, or re-paste the script.
+                </td>
+              </tr>
+              <tr>
+                <td>tool_definition_validation_failed</td>
+                <td>
+                  Fonada updated a tool. Install the latest Fonada MCP version
+                  and re-paste the script.
+                </td>
+              </tr>
+              <tr>
+                <td>Save fails in the Script view</td>
+                <td>
+                  Copy the script again from this page; do not edit the target
+                  lines.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  "Sorry, it looks like something has gone wrong" on every
+                  message
+                </td>
+                <td>
+                  Your org may not offer the selected AI model. On the Setup
+                  page pick another model (GPT-4.1 or your org's default), copy
+                  the script again and paste it into the agent.
+                </td>
+              </tr>
+              <tr>
+                <td>"Your session has ended" in Preview</td>
+                <td>
+                  Click New conversation in Preview after every Save or Commit.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Agent says it has no tool for credits, telephony agents, etc.
+                </td>
+                <td>
+                  The script was saved but not committed. Click Commit →
+                  Activate, then New conversation in Preview.
+                </td>
+              </tr>
+              <tr>
+                <td>"Salesforce CRM actions are turned off by your admin"</td>
+                <td>
+                  Setup → Custom Settings → Fonada Settings → Manage → untick
+                  <i>Disable CRM actions</i>.
+                </td>
+              </tr>
+              <tr>
+                <td>A contact or lead is not called</td>
+                <td>
+                  It has no usable phone, is a duplicate, or is marked
+                  <b>Do Not Call</b>. Do Not Call records are skipped on
+                  purpose.
+                </td>
+              </tr>
+              <tr>
+                <td>"Not started: a Fonada campaign … was already started"</td>
+                <td>
+                  The same Salesforce campaign or account was started with the
+                  same Fonada agent a few minutes ago, so it was not started
+                  twice. Say you really want a second run and the agent will
+                  start it again, or change
+                  <i>Repeat launch guard (minutes)</i> in Fonada Settings. Past
+                  starts are listed in the Fonada Campaign Launch records.
+                </td>
+              </tr>
+              <tr>
+                <td>Numbers outside India dial wrongly</td>
+                <td>
+                  Setup → Custom Settings → Fonada Settings → Manage → set
+                  <i>Default country code</i> (e.g. 1 for the US). Numbers saved
+                  with a leading + are always dialed as-is.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="slds-m-top_small">
+            <b>Fonada Settings</b> (Setup → Custom Settings → Fonada Settings →
+            Manage, all optional): <i>Disable CRM actions</i> ·
+            <i>Include Do Not Call records</i> (not recommended) ·
+            <i>Disable automatic agent access</i> (new agent users then need the
+            Fix agent access button) · <i>Default country code</i> (default 91)
+            · <i>Repeat launch guard (minutes)</i> (default 10, 0 = off). Set
+            them for the whole org, or per profile or user.
+          </p>
+          <div class="slds-m-top_small">
+            <lightning-button
+              label="Fix agent access"
+              icon-name="utility:key"
+              onclick={handleFixAccess}
+            ></lightning-button>
+            <span class="slds-m-left_small slds-text-color_weak"
+              >Gives both Fonada permission sets to every agent user now.</span
+            >
+          </div>
+          <template lwc:if={adminMessage}>
+            <div
+              class="slds-notify slds-notify_alert slds-alert_offline slds-m-top_small"
+              role="status"
+            >
+              {adminMessage}
+            </div>
+          </template>
+          <p class="slds-m-top_small">
+            <b>Support:</b> support@fonada.ai · https://fonada.ai
+          </p>
+        </lightning-tab>
+
+        <lightning-tab label="5. Uninstall">
+          <p class="slds-m-bottom_small">
+            Salesforce only uninstalls the package when nothing in your org
+            still uses it. Do these steps in order:
+          </p>
+          <ol class="slds-list_ordered slds-m-bottom_medium">
+            <li>
+              <b>Remove the agent:</b> Agentforce Builder → your Fonada agent →
+              Deactivate → delete it (or remove all Fonada actions from it).
+            </li>
+            <li>
+              <b>Remove permission-set assignments:</b> click
+              <b>Prepare for uninstall</b> below. It removes every assignment of
+              "Fonada MCP - Permission Set", which otherwise blocks the
+              uninstall with
+              <i>"This permission set is assigned to one or more users"</i>, and
+              deletes the "Fonada MCP - Agent Credential Read" permission set
+              the package created.
+            </li>
+            <li>
+              <b>Uninstall:</b> Setup → Installed Packages → Fonada MCP →
+              Uninstall → tick "Yes, I want to uninstall" → Uninstall. Your
+              Fonada key is deleted with the package.
+            </li>
+            <li>
+              <b>Check:</b> Setup → Permission Sets: "Fonada MCP - Agent
+              Credential Read" is gone (if it is still listed, delete it by
+              hand).
+            </li>
+          </ol>
+          <lightning-button
+            variant="destructive"
+            label="Prepare for uninstall"
+            icon-name="utility:delete"
+            onclick={handlePrepareUninstall}
+          ></lightning-button>
+          <p class="slds-m-top_small slds-text-color_weak">
+            After this, the Fonada agent can no longer call Fonada until you
+            click "Fix agent access" (Troubleshooting tab) or reinstall.
+          </p>
+          <template lwc:if={adminMessage}>
+            <div
+              class="slds-notify slds-notify_alert slds-alert_offline slds-m-top_small"
+              role="status"
+            >
+              {adminMessage}
+            </div>
+          </template>
+        </lightning-tab>
+      </lightning-tabset>
+    </div>
+  </lightning-card>
+</template>

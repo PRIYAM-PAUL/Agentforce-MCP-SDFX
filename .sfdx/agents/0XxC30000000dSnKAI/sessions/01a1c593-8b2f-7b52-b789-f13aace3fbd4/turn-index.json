@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "sessionId": "01a1c593-8b2f-7b52-b789-f13aace3fbd4",
+  "agentId": "0XxC30000000dSnKAI",
+  "created": "2026-11-10T13:09:03.915Z",
+  "turns": [
+    {
+      "turn": 1,
+      "timestamp": "2026-11-10T13:09:03.915Z",
+      "role": "agent",
+      "summary": "Hi, I'm the Fonada assistant. I can find your Salesforce contacts and leads, call them through Fonad...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 2,
+      "timestamp": "2026-11-10T13:09:05.340Z",
+      "role": "user",
+      "summary": "find contact Test Person",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 3,
+      "timestamp": "2026-11-10T13:09:08.112Z",
+      "role": "agent",
+      "summary": "Sorry, it looks like something has gone wrong.",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": "traces/0acfeaf1-f86f-4848-9cf4-2c4839a1ecb8.json",
+      "planId": "0acfeaf1-f86f-4848-9cf4-2c4839a1ecb8"
+    }
+  ]
+}

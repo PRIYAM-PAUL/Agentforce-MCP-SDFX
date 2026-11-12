@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "sessionId": "01a1c52c-c563-7df2-af35-887c03621e82",
+  "agentId": "0XxC200000012qzKAA",
+  "created": "2026-11-10T11:16:52.016Z",
+  "turns": [
+    {
+      "turn": 1,
+      "timestamp": "2026-11-10T11:16:52.016Z",
+      "role": "agent",
+      "summary": "Hi, I'm the Fonada assistant. I can find your Salesforce contacts and leads, call them through Fonad...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 2,
+      "timestamp": "2026-11-10T11:17:13.975Z",
+      "role": "user",
+      "summary": "find contact Priyam Paul",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 3,
+      "timestamp": "2026-11-10T11:17:19.989Z",
+      "role": "agent",
+      "summary": "I found the contact Priyam Paul in Salesforce:\n\nName: Priyam Paul\nCompany: Fonada Test Bank\nPhone: 0...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/30d57795-cc1e-4473-b648-8a2de6fdceca.json",
+      "planId": "30d57795-cc1e-4473-b648-8a2de6fdceca"
+    },
+    {
+      "turn": 4,
+      "timestamp": "2026-11-10T11:17:22.277Z",
+      "role": "user",
+      "summary": "find lead Rahul",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 5,
+      "timestamp": "2026-11-10T11:17:28.908Z",
+      "role": "agent",
+      "summary": "I found the lead Rahul in Salesforce:\n\nName: Rahul Lead\nCompany: Demo Co\nPhone: 9123456789\n\nWould yo...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/cfd6c0b9-ee6b-411a-808d-f273e52a4c0d.json",
+      "planId": "cfd6c0b9-ee6b-411a-808d-f273e52a4c0d"
+    },
+    {
+      "turn": 6,
+      "timestamp": "2026-11-10T11:17:31.438Z",
+      "role": "user",
+      "summary": "build a call list for the Salesforce campaign Loan Due November",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 7,
+      "timestamp": "2026-11-10T11:17:37.289Z",
+      "role": "agent",
+      "summary": "The Salesforce campaign \"Loan Due November\" has 2 people ready to call:\n\nPriyam Paul (919310997248)\n...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/a9d578ba-a3a6-4a60-aa30-28a6560ffbd7.json",
+      "planId": "a9d578ba-a3a6-4a60-aa30-28a6560ffbd7"
+    },
+    {
+      "turn": 8,
+      "timestamp": "2026-11-10T11:17:40.047Z",
+      "role": "user",
+      "summary": "call all contacts of account Fonada Test Bank",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 9,
+      "timestamp": "2026-11-10T11:17:45.595Z",
+      "role": "agent",
+      "summary": "The account \"Fonada Test Bank\" has 2 contacts ready to call:\n\nPriyam Paul (919310997248)\nTest Custom...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/8709d236-33fc-4891-8ee6-76c0bb738a48.json",
+      "planId": "8709d236-33fc-4891-8ee6-76c0bb738a48"
+    }
+  ]
+}

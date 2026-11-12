@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "sessionId": "01a1c594-9aaf-7332-afa5-b03713e4c317",
+  "agentId": "0XxC30000000dSnKAI",
+  "created": "2026-11-10T13:10:13.316Z",
+  "turns": [
+    {
+      "turn": 1,
+      "timestamp": "2026-11-10T13:10:13.316Z",
+      "role": "agent",
+      "summary": "Hi, I'm the Fonada assistant. I can find your Salesforce contacts and leads, call them through Fonad...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 2,
+      "timestamp": "2026-11-10T13:10:15.095Z",
+      "role": "user",
+      "summary": "which tools can you use?",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 3,
+      "timestamp": "2026-11-10T13:10:25.742Z",
+      "role": "agent",
+      "summary": "I can use these Fonada MCP tools:\n\nSalesforce Integration:\n\nfind_crm_record - Find a Salesforce cont...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/46072f42-49aa-4944-a369-849ec96e425c.json",
+      "planId": "46072f42-49aa-4944-a369-849ec96e425c"
+    }
+  ]
+}

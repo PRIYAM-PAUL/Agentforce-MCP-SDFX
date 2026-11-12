@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disable_Auto_Access__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Tick to stop the package from automatically giving new Agentforce agent users Fonada access. Use the Fix agent access button in the Fonada Setup tab instead.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Tick to stop the package from automatically giving new Agentforce agent users Fonada access. Use the Fix agent access button in the Fonada Setup tab instead.</inlineHelpText>
+    <label>Disable automatic agent access</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

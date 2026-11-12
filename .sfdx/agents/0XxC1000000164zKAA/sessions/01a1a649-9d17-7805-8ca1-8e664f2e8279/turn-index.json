@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "sessionId": "01a1a649-9d17-7805-8ca1-8e664f2e8279",
+  "agentId": "0XxC1000000164zKAA",
+  "created": "2026-11-04T11:20:10.421Z",
+  "turns": [
+    {
+      "turn": 1,
+      "timestamp": "2026-11-04T11:20:10.421Z",
+      "role": "agent",
+      "summary": "Hi, I'm the Fonada assistant. I can list your telephony agents, place test calls, send WhatsApp or R...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 2,
+      "timestamp": "2026-11-04T11:20:12.692Z",
+      "role": "user",
+      "summary": "list my telephony agents",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 3,
+      "timestamp": "2026-11-04T11:20:18.766Z",
+      "role": "agent",
+      "summary": "There was an error retrieving your telephony agents: \"Named credential refresh failed for 'FonadaAI_...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/3af485e4-fb5c-4b9a-900a-5e4eacafdc7d.json",
+      "planId": "3af485e4-fb5c-4b9a-900a-5e4eacafdc7d"
+    }
+  ]
+}

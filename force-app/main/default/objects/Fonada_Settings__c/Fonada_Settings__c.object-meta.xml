@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Fonada MCP settings. Optional: with no record, the package uses safe defaults. Edit in Setup → Custom Settings → Fonada Settings → Manage. Org-level values apply to everyone; profile or user values override them.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Fonada Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

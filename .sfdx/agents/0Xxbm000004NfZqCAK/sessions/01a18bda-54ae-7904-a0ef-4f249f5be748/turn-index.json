@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "sessionId": "01a18bda-54ae-7904-a0ef-4f249f5be748",
+  "agentId": "0Xxbm000004NfZqCAK",
+  "created": "2026-10-30T08:08:27.051Z",
+  "turns": [
+    {
+      "turn": 1,
+      "timestamp": "2026-10-30T08:08:27.051Z",
+      "role": "agent",
+      "summary": "Hi, I'm an AI assistant. How can I help you?",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 2,
+      "timestamp": "2026-10-30T08:08:52.379Z",
+      "role": "user",
+      "summary": "check all chatbot bot",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 3,
+      "timestamp": "2026-10-30T08:08:56.225Z",
+      "role": "agent",
+      "summary": "Could you clarify what you mean by \"check all chatbot bot\"? Are you looking to review a list of chat...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/8b9aec2a-58b2-4774-9dd3-039c2f05ca5e.json",
+      "planId": "8b9aec2a-58b2-4774-9dd3-039c2f05ca5e"
+    },
+    {
+      "turn": 4,
+      "timestamp": "2026-10-30T08:09:04.012Z",
+      "role": "user",
+      "summary": "list them",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 5,
+      "timestamp": "2026-10-30T08:09:07.543Z",
+      "role": "agent",
+      "summary": "Could you clarify what you mean by \"list them\"? Are you asking for a list of chatbots within a speci...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/5d4ca06b-2d6e-40ba-9f7b-ae2af2df1cc9.json",
+      "planId": "5d4ca06b-2d6e-40ba-9f7b-ae2af2df1cc9"
+    },
+    {
+      "turn": 6,
+      "timestamp": "2026-10-30T08:09:19.447Z",
+      "role": "user",
+      "summary": "list all chat bot via fonada mcp",
+      "summaryTruncated": false,
+      "multiModal": null,
+      "traceFile": null,
+      "planId": null
+    },
+    {
+      "turn": 7,
+      "timestamp": "2026-10-30T08:09:32.679Z",
+      "role": "agent",
+      "summary": "Here is the list of all chatbot agents found via Fonada MCP:\n\nName: check\n\nDescription: An engaging ...",
+      "summaryTruncated": true,
+      "multiModal": null,
+      "traceFile": "traces/fd164bb3-9e70-436e-bd7b-5ec460e2a049.json",
+      "planId": "fd164bb3-9e70-436e-bd7b-5ec460e2a049"
+    }
+  ]
+}

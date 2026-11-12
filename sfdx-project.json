@@ -1,0 +1,41 @@
+{
+  "packageDirectories": [
+    {
+      "versionName": "Fonada MCP 1.0",
+      "versionNumber": "1.3.0.NEXT",
+      "path": "force-app",
+      "default": true,
+      "package": "Fonada MCP",
+      "ancestorVersion": "1.1.0",
+      "postInstallScript": "FonadaMCPPostInstall",
+      "versionDescription": "Agentforce + Fonada AI: call Salesforce contacts and leads, run voice campaigns from Salesforce Campaigns or Accounts, WhatsApp, RCS, knowledge base, credits. Ready-made agent in the Fonada Setup tab."
+    },
+    {
+      "path": "agent-script",
+      "default": false
+    }
+  ],
+  "name": "fonada-agentforce-mcp-package",
+  "namespace": "FonadaAI",
+  "sourceApiVersion": "66.0",
+  "packageAliases": {
+    "Fonada MCP": "0HodN0000000bcHSAQ",
+    "Fonada MCP@1.0.0-2": "04tdN000000TP6HQAW",
+    "Fonada MCP@1.0.0-3": "04tdN000000TP7tQAG",
+    "Fonada MCP@1.0.0-4": "04tdN000000TPRFQA4",
+    "Fonada MCP@1.1.0-1": "04tdN000000TSk5QAG",
+    "Fonada MCP@1.2.0-1": "04tdN000000TVRpQAO",
+    "Fonada MCP@1.2.0-2": "04tdN000000TVjZQAW",
+    "Fonada MCP@1.2.0-3": "04tdN000000TVtFQAW",
+    "Fonada MCP@1.2.0-4": "04tdN000000TVurQAG",
+    "Fonada MCP@1.2.0-5": "04tdN000000TXa5QAG",
+    "Fonada MCP@1.2.0-6": "04tdN000000TdPNQA0",
+    "Fonada MCP@1.2.0-7": "04tdN000000TdcHQAS",
+    "Fonada MCP@1.2.0-8": "04tdN000000TddtQAC",
+    "Fonada MCP@1.2.0-9": "04tdN000000Te6vQAC",
+    "Fonada MCP@1.2.0-10": "04tdN000000TetJQAS",
+    "Fonada MCP@1.2.0-11": "04tdN000000Tf1NQAS",
+    "Fonada MCP@1.2.0-12": "04tdN000000TfHVQA0",
+    "Fonada MCP@1.2.0-13": "04tdN000000TfMLQA0"
+  }
+}

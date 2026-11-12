@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Fonada MCP setup: build the ready-to-paste Agent Script for an agent user.</description>
+    <label>Fonada Setup</label>
+    <lwcComponent>fonadaSetup</lwcComponent>
+    <motif>Custom62: Telephone</motif>
+</CustomTab>
