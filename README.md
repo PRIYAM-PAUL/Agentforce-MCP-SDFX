@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Fonada MCP for Agentforce
 
 A managed Salesforce package (2GP) that connects **Agentforce** to the **Fonada AI platform** over the Model
@@ -78,3 +79,6 @@ sf package version promote --package "Fonada MCP@<x.y.z-n>" --target-dev-hub age
 
 **Next version line:** in `sfdx-project.json`, set `versionNumber` to `1.3.0.NEXT` and `ancestorVersion` to
 `1.2.0` before the next build. `versionName` stays `"Fonada MCP 1.0"` (that's the customer-facing name).
+=======
+# Agentforce-MCP-SDFX
+>>>>>>> origin/main
